@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login/Registration</title>
+</head>
+<body>
+
+    <h2>Welcome!</h2>
+    {%if messages%}
+        {%for message in messages%}
+        <p style="color: red">{{message}}</p>
+        {%endfor%}
+    {%endif%}
+    <h3>Register</h3>
+    <form action='/register' method='post'>
+        {%csrf_token%}
+        Name: <input type='text' name='name' placeholder="Enter your name."><br/>
+        Alias: <input type='text' name='alias' placeholder="Enter your alias."><br/>
+        Email: <input type='text' name='email' placeholder="Enter your email."><br/>
+        Password: <input type='text' name='password' placeholder="Enter your password."><br/>
+        <p>*Password should be at least 8 characters</p>
+        Confirm PW: <input type='text' name='c_password' placeholder="Confirm your password."><br/>
+        Date of Birth: <input type='date' name='bday'><br/>
+        <input type='submit' value="Register">
+    </form>
+        <h3>Login</h3>
+    <form action='/login' method='post'>  
+        {%csrf_token%}              
+        Email: <input type='text' name='email' placeholder="Enter your email."><br/>
+        Password: <input type='text' name='password' placeholder="Enter your password."><br/>
+        <input type='submit' value="Login">
+
+        
+    </form>
+
+
+</body>
+</html>

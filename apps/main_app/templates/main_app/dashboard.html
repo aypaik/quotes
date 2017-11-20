@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Quotes</title>
+</head>
+<body>
+    
+    <p align='right'><a href='/logout'>Logout</a></p>
+    <h2>Welcome, {{request.session.name}}!</h2><br/>
+    
+    <p>Quotable Quotes</p>
+    <table>
+        {% for Quote in other_quotes %}                
+        <tr>
+            <td>{{Quote.quoted_by}}:</td>
+            <td>{{Quote.quote}}</td>
+            <td>Posted by <a href='/main/show/{{Quote.id}}'>{{Quote.posted_by.name}}</a></td>
+            <td><button><a href='/main/addtofavorites/{{Quote.id}}'>Add to My List</a></button></td>
+        </tr>
+        {% endfor %}   
+    </table>
+
+    <p>Your Favorites:</p>
+    <table>
+        {% for Quote in favorite_quotes %}
+        <tr>
+            <td>{{Quote.quoted_by}}:</td>
+            <td>{{Quote.quote}}</td>
+            <td>Posted by <a href='/main/show/{{Quote.id}}'>{{Quote.posted_by.name}}</a></td>
+            <td><button><a href='/main/removefromfavorites/{{Quote.id}}'>Remove from My List</a></button></td>
+            
+        </tr>
+        {% endfor%}
+    </table>
+    <br>
+
+    {%if messages%}
+        {%for message in messages%}
+            <p style="color: red">{{message}}</p>
+        {%endfor%}
+    {%endif%}
+
+
+    <h3>Contribute a Quote:</h3>
+    <form action='/main/add' method='post'>
+        {% csrf_token %}
+        Quoted By: <input type='text' name='quoted_by'><br/>
+        Message: <input type='text' name='quote'><br/>
+        <input type='submit' value='Submit'>
+    </form>
+
+        
+
+</body>
+</html>

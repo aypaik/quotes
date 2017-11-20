@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <p align='right'><a href='/main/dashboard'>Dashboard</a> | <a href='/logout'>Logout</a></p>
+    <h2>Posts by {{quote.posted_by.name}}</h2>
+    <p>Count: </p>
+
+
+    <table>
+            <tr>
+                <td><p style='color: red'>{{quote.quoted_by}}:</p></td>
+                <td>{{quote.quote}}</td>            
+            </tr>
+    </table>
+
+</body>
+</html>
